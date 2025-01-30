@@ -27,7 +27,7 @@ namespace Repository.Implementation
                 return entities
                     .Include("Apartment")
                     .Include("Hotel")
-                    .Include("Destionation")
+                    .Include("Destination")
                     .AsEnumerable();
             }
             else

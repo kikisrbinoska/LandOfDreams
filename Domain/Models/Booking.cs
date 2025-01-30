@@ -9,6 +9,7 @@ namespace Domain.Models
 {
     public class Booking : BaseEntity
     {
+     
         public int? ApartmentId { get; set; } 
         public virtual Apartment? Apartment { get; set; }
         public int? HotelId { get; set; }

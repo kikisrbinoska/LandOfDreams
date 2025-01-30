@@ -1,66 +1,49 @@
-﻿@model IEnumerable<Domain.Models.Apartment>
+﻿@model List<Domain.Models.Apartment>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Apartments";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<div class="container">
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        if (i % 3 == 0)
+        {
+            if (i != 0)
+            {
+                @:</div>
+            }
+            @:<div class="row">
+        }
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Location)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Map)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImageUrl)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Map)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImageUrl)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+        var item = Model[i];
+        <div class="col-md-4 mb-4">
+            <div class="card" style="width: 18rem;">
+                <a asp-action="Details" asp-controller="Apartments" asp-route-id="@item.Id">
+                    <img class="card-img-top" src="@item.ImageUrl" alt="@item.Name">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">@item.Name</h5>
+                    <p>@item.Location</p>
+                </div>
+            </div>
+        </div>
+    }
+
+    @if (Model.Count % 3 != 0)
+    {
+        @:</div>
+    }
+</div>
+
+<style>
+    .row {
+        display: flex;
+        margin-top: 20px;
+    }
+    img {
+        width: 100%;
+        height: auto;
+    }
+</style>

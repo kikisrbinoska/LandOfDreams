@@ -4,28 +4,33 @@
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card" style="width: 18rem;">
+                <a asp-action="Index" asp-controller="Apartments" asp-route-id="1">
+                    <img class="card-img-top" src="~/images/apartment.jpg" alt="Apartments">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Apartments</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card" style="width: 18rem;">
+                <a asp-action="Index" asp-controller="Hotels" asp-route-id="2">
+                    <img class="card-img-top" src="~/images/hotel.jpg" alt="Hotels">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">Hotels</h5>
+                </div>
+            </div>
+        </div>
 
-<h1>Details</h1>
-
-<div>
-    <h4>Destionation</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ImageUrl)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ImageUrl)
-        </dd>
-    </dl>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+<style>
+    .container {
+        margin-top: 20px;
+    }
+</style>

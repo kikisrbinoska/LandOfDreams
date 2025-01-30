@@ -22,6 +22,7 @@ builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddTransient<IDestinationService, DestinationService>();
 builder.Services.AddTransient<IHotelService, HotelService>();
 builder.Services.AddTransient<IApartmentService, ApartmentService>();
+builder.Services.AddTransient<IBookingService, BookingService>();
 
 var app = builder.Build();
 

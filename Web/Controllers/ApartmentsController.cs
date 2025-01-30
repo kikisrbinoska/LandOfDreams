@@ -8,18 +8,44 @@ using Microsoft.EntityFrameworkCore;
 using Domain.Models;
 using Repository;
 using Service.Interface;
+using Domain.DTO;
 
 namespace Web.Controllers
 {
     public class ApartmentsController : Controller
     {
         private readonly IApartmentService _apartmentService;
+        private readonly IBookingService _bookingService;
 
-        public ApartmentsController(IApartmentService apartmentService)
+        public ApartmentsController(IApartmentService apartmentService, IBookingService bookingService)
         {
             _apartmentService = apartmentService;
+            _bookingService = bookingService;
         }
+        public IActionResult AddBooking(int id)
+        {
+            AddBookingToApartment dto = new AddBookingToApartment()
+            {
+                ApartmentId = id,
+                Bookings = _bookingService.GetAllBookings()
+            };
+            return View(dto);
+        }
+        [HttpPost]
+        public IActionResult AddBooking(AddBookingToApartment model)
+        {
+            if (model == null)
+            {
+                return NotFound();
+            }
+            if (ModelState.IsValid)
+            {
+                _bookingService.ApartmentBooking(model.ApartmentId);
 
+                return RedirectToAction(nameof(Index));
+            }
+            return View(model);
+        }
 
         // GET: Apartments
         public IActionResult Index()
