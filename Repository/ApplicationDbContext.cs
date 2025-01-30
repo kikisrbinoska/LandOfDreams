@@ -16,6 +16,7 @@ namespace Repository
         public virtual DbSet<Hotel> Hotels { get; set; }
         public virtual DbSet<Review> Reviews { get; set; }
         public virtual DbSet<Destination> Destinations { get; set; }
+        public virtual DbSet<Reservation> Reservations { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

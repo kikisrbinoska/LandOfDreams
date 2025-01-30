@@ -11,25 +11,22 @@ using Service.Interface;
 
 namespace Web.Controllers
 {
-    public class ApartmentsController : Controller
+    public class ReservationsController : Controller
     {
-        private readonly IApartmentService _apartmentService;
-        private readonly IBookingService _bookingService;
+        private readonly IReservationService _reservationService;
 
-        public ApartmentsController(IApartmentService apartmentService, IBookingService bookingService)
+        public ReservationsController(IReservationService reservationService)
         {
-            _apartmentService = apartmentService;
-            _bookingService = bookingService;
+            _reservationService = reservationService;
         }
-       
 
-        // GET: Apartments
+        // GET: Reservations
         public IActionResult Index()
         {
-            return View(_apartmentService.GetAllApartments());
+            return View(_reservationService.GetAllReservations());
         }
 
-        // GET: Apartments/Details/5
+        // GET: Reservations/Details/5
         public IActionResult Details(int? id)
         {
             if (id == null)
@@ -37,38 +34,37 @@ namespace Web.Controllers
                 return NotFound();
             }
 
-            var apartment = _apartmentService.GetApartment(id);
-            if (apartment == null)
+            var reservation = _reservationService.GetReservation(id);
+            if (reservation == null)
             {
                 return NotFound();
             }
 
-            return View(apartment);
+            return View(reservation);
         }
 
-        // GET: Apartments/Create
+        // GET: Reservations/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Apartments/Create
+        // POST: Reservations/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind("Name,Location,Price,Map,Description,ImageUrl,Id")] Apartment apartment)
+        public IActionResult Create([Bind("BookingDate,TravelEndDate,NumberOfPeople,TotalCost,Id")] Reservation reservation)
         {
             if (ModelState.IsValid)
             {
-                _apartmentService.InsertApartment(apartment);
-                
+                _reservationService.InsertReservation(reservation);
                 return RedirectToAction(nameof(Index));
             }
-            return View(apartment);
+            return View(reservation);
         }
 
-        // GET: Apartments/Edit/5
+        // GET: Reservations/Edit/5
         public IActionResult Edit(int? id)
         {
             if (id == null)
@@ -76,22 +72,22 @@ namespace Web.Controllers
                 return NotFound();
             }
 
-            var apartment = _apartmentService.GetApartment(id);
-            if (apartment == null)
+            var reservation =_reservationService.GetReservation(id);
+            if (reservation == null)
             {
                 return NotFound();
             }
-            return View(apartment);
+            return View(reservation);
         }
 
-        // POST: Apartments/Edit/5
+        // POST: Reservations/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("Name,Location,Price,Map,Description,ImageUrl,Id")] Apartment apartment)
+        public IActionResult Edit(int id, [Bind("BookingDate,TravelEndDate,NumberOfPeople,TotalCost,Id")] Reservation reservation)
         {
-            if (id != apartment.Id)
+            if (id != reservation.Id)
             {
                 return NotFound();
             }
@@ -100,12 +96,12 @@ namespace Web.Controllers
             {
                 try
                 {
-                    _apartmentService.UpdateApartment(apartment);
+                    _reservationService.UpdateReservation(reservation);
                     
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ApartmentExists(apartment.Id))
+                    if (!ReservationExists(reservation.Id))
                     {
                         return NotFound();
                     }
@@ -116,10 +112,10 @@ namespace Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(apartment);
+            return View(reservation);
         }
 
-        // GET: Apartments/Delete/5
+        // GET: Reservations/Delete/5
         public IActionResult Delete(int? id)
         {
             if (id == null)
@@ -127,33 +123,33 @@ namespace Web.Controllers
                 return NotFound();
             }
 
-            var apartment = _apartmentService.GetApartment(id);
-            if (apartment == null)
+            var reservation = _reservationService.GetReservation(id);
+            if (reservation == null)
             {
                 return NotFound();
             }
 
-            return View(apartment);
+            return View(reservation);
         }
 
-        // POST: Apartments/Delete/5
+        // POST: Reservations/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            var apartment = _apartmentService.GetApartment(id);
-            if (apartment != null)
+            var reservation = _reservationService.GetReservation(id);
+            if (reservation != null)
             {
-                _apartmentService.DeleteApartment(apartment);
+                _reservationService.DeleteReservation(reservation);
             }
 
-            
+          
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ApartmentExists(int id)
+        private bool ReservationExists(int id)
         {
-            return _apartmentService.GetAllApartments() != null;
+            return _reservationService.GetAllReservations() != null;
         }
     }
 }
