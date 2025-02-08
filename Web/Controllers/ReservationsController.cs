@@ -54,15 +54,18 @@ namespace Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("BookingDate,TravelEndDate,NumberOfPeople,TotalCost,Id")] Reservation reservation)
+        public IActionResult Create([Bind("BookingDate,TravelEndDate,NumberOfPeople,TotalCost,FirstName,LastName,Email,PhoneNumberPrefix,PhoneNumber")] Reservation reservation)
         {
             if (ModelState.IsValid)
             {
-                _reservationService.InsertReservation(reservation);
-                return RedirectToAction(nameof(Index));
+                _reservationService.InsertReservation(reservation);  
+                return RedirectToAction(nameof(Index));  
             }
-            return View(reservation);
+
+            return View(reservation); 
         }
+
+
 
         // GET: Reservations/Edit/5
         public IActionResult Edit(int? id)

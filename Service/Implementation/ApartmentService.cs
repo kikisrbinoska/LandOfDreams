@@ -33,6 +33,11 @@ namespace Service.Implementation
             return _apartmentRepository.Get(id);
         }
 
+        public List<Apartment> GetApartmentsByDestination(int destinationId)
+        {
+            return _apartmentRepository.GetAll().Where(a => a.DestinationId == destinationId).ToList();
+        }
+
         public Apartment InsertApartment(Apartment entity)
         {
             return _apartmentRepository.Insert(entity);

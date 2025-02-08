@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-md-4 mb-4">
             <div class="card" style="width: 18rem;">
-                <a asp-action="Index" asp-controller="Apartments" asp-route-id="1">
+               <a asp-action="Index" asp-controller="Apartments" asp-route-destinationId="@Model.Id">
                     <img class="card-img-top" src="~/images/apartment.jpg" alt="Apartments">
                 </a>
                 <div class="card-body">
@@ -18,7 +18,7 @@
         </div>
         <div class="col-md-4 mb-4">
             <div class="card" style="width: 18rem;">
-                <a asp-action="Index" asp-controller="Hotels" asp-route-id="2">
+                <a asp-action="Index" asp-controller="Hotels" asp-route-destinationId="@Model.Id">
                     <img class="card-img-top" src="~/images/hotel.jpg" alt="Hotels">
                 </a>
                 <div class="card-body">
@@ -32,5 +32,34 @@
 <style>
     .container {
         margin-top: 20px;
+        display: flex;
+        justify-content: center;
     }
+
+    .row {
+        display: flex;
+        justify-content: center;
+        gap: 150px;
+    }
+
+    .card {
+        width: 500px;
+        border: 2px solid #a042b2; 
+        box-shadow: 0 4px 10px rgba(160, 66, 178, 0.5);
+        border-radius: 6px;
+        overflow: hidden;
+        transition: transform 0.3s ease-in-out;
+    }
+
+        .card:hover {
+            transform: scale(1.05); 
+        }
+
+        .card img {
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+            height: 200px; 
+            object-fit: cover; 
+        }
+
 </style>

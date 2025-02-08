@@ -21,12 +21,19 @@ namespace Web.Controllers
             _apartmentService = apartmentService;
             _bookingService = bookingService;
         }
-       
+
 
         // GET: Apartments
-        public IActionResult Index()
+        public IActionResult Index(int? destinationId)
         {
-            return View(_apartmentService.GetAllApartments());
+            if (destinationId == null)
+            {
+                return NotFound();
+            }
+
+            var apartments = _apartmentService.GetApartmentsByDestination(destinationId.Value);
+
+            return View(apartments);
         }
 
         // GET: Apartments/Details/5

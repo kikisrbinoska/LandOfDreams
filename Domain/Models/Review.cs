@@ -9,8 +9,6 @@ namespace Domain.Models
 {
     public class Review : BaseEntity
     {
-        [Key]
-        public int Id { get; set; }
         public string? Comment { get; set; }
         public DateTime CreatedAt { get; set; }
         [Required]

@@ -2,7 +2,56 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="hero-section">
+    <div class="hero-text">
+        <h1>Follow your Dreams🌸</h1>
+        <p><a asp-controller="Destionations" asp-action="Index">Book your dream destination now 🚀</a></p>
+    </div>
 </div>
+
+<style>
+    .hero-section {
+        height: 900px;
+        margin-top: -200px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-right: -150px;
+        padding-right: -500px;
+        margin-bottom: -100px;
+        background: linear-gradient(to left, #a042b2 0%, rgba(160, 66, 178, 0) 50%);
+    }
+
+    .hero-text {
+        text-align: right;
+        color: purple;
+        margin-right: 1000px;
+        font-size: 20px;
+    }
+
+        .hero-text h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .hero-text p a {
+            font-size: 20px;
+            color: #d269e6;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 12px 24px;
+            font-style: italic;
+            border: 2px solid white;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: #a042b2;
+        }
+
+            .hero-text p a:hover {
+                background: white;
+                color: #a042b2;
+            }
+</style>

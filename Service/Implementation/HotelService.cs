@@ -1,4 +1,5 @@
 ﻿using Domain.Models;
+using Repository.Implementation;
 using Repository.Interface;
 using Service.Interface;
 using System;
@@ -33,6 +34,7 @@ namespace Service.Implementation
             return _hotelRepository.Get(id);
         }
 
+
         public Hotel InsertHotel(Hotel entity)
         {
             return _hotelRepository.Insert(entity);
@@ -46,6 +48,12 @@ namespace Service.Implementation
         public Hotel UpdateHotel(Hotel entity)
         {
             return _hotelRepository.Update(entity);
+        }
+
+        public List<Hotel> GetHotelsByDestination(int destinationId)
+        {
+            return _hotelRepository.GetAll().Where(a => a.DestinationId == destinationId).ToList();
+
         }
     }
 }

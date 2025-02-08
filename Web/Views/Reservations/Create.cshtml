@@ -5,42 +5,94 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
-
-<h4>Reservation</h4>
+<h1 style="margin-left:450px; color: rgba(128, 0, 128, 0.5); font-weight:600">Enter booking details</h1>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="BookingDate" class="control-label"></label>
-                <input asp-for="BookingDate" class="form-control" />
-                <span asp-validation-for="BookingDate" class="text-danger"></span>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="p-4 rounded" style="box-shadow: 0 0 15px rgba(128, 0, 128, 0.5); background: #f9f9ff;">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="BookingDate" class="control-label"></label>
+                                <input asp-for="BookingDate" class="form-control" />
+                                <span asp-validation-for="BookingDate" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="TravelEndDate" class="control-label"></label>
+                                <input asp-for="TravelEndDate" class="form-control" />
+                                <span asp-validation-for="TravelEndDate" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="NumberOfPeople" class="control-label"></label>
+                                <input asp-for="NumberOfPeople" class="form-control" />
+                                <span asp-validation-for="NumberOfPeople" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="TotalCost" class="control-label"></label>
+                                <input asp-for="TotalCost" class="form-control" />
+                                <span asp-validation-for="TotalCost" class="text-danger"></span>
+                            </div>
+                           
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="FirstName" class="control-label"></label>
+                                <input asp-for="FirstName" class="form-control" />
+                                <span asp-validation-for="FirstName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="LastName" class="control-label"></label>
+                                <input asp-for="LastName" class="form-control" />
+                                <span asp-validation-for="LastName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Email" class="control-label"></label>
+                                <input asp-for="Email" class="form-control" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-4">
+                                    <label>Prefix</label>
+                                    <input asp-for="PhoneNumberPrefix" class="form-control" placeholder="+389" />
+                                    <span asp-validation-for="PhoneNumberPrefix" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Phone number</label>
+                                    <input asp-for="PhoneNumber" class="form-control" placeholder="7X XXX XXX" />
+                                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="TravelEndDate" class="control-label"></label>
-                <input asp-for="TravelEndDate" class="form-control" />
-                <span asp-validation-for="TravelEndDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NumberOfPeople" class="control-label"></label>
-                <input asp-for="NumberOfPeople" class="form-control" />
-                <span asp-validation-for="NumberOfPeople" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TotalCost" class="control-label"></label>
-                <input asp-for="TotalCost" class="form-control" />
-                <span asp-validation-for="TotalCost" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
 </div>
+<style>
+    .btn-primary{
+        box-shadow: 0 4px 10px rgba(106, 13, 173, 0.5);
+        background: transparent;
+        border: 2px solid #a042b2;
+        border-radius: 8px;
+        color: rebeccapurple;
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    }
 
+    .btn-primary:hover {
+        background: linear-gradient(45deg, #b833ff, #6a0dad);
+        color: white !important;
+        transform: scale(1.1);
+        box-shadow: 0 6px 15px rgba(184, 51, 255, 0.7);
+        border-color:#6a0dad;
+</style>

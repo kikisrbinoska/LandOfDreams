@@ -15,6 +15,8 @@ namespace Domain.Models
         public string? Map { get; set; }
         public string? Description { get; set; }
         public string? ImageUrl { get; set; }
+        public int DestinationId    { get; set; }
+        public Destination Destination { get; set; }
         public virtual List<Review>? Reviews { get; set; }
         public virtual List<Booking>? Bookings { get; set; } 
     }

@@ -1,3 +1,5 @@
+using jsreport.Binary;
+using jsreport.Local;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Repository;
@@ -24,7 +26,7 @@ builder.Services.AddTransient<IHotelService, HotelService>();
 builder.Services.AddTransient<IApartmentService, ApartmentService>();
 builder.Services.AddTransient<IBookingService, BookingService>();
 builder.Services.AddTransient<IReservationService, ReservationService>();
-
+builder.Services.AddTransient<IPaymentsService, PaymentsService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

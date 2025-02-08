@@ -15,5 +15,6 @@ namespace Service.Interface
         List<Hotel> InsertManyHotels(List<Hotel> entities);
         Hotel UpdateHotel(Hotel entity);
         Hotel DeleteHotel(Hotel entity);
+        List<Hotel> GetHotelsByDestination(int destinationId);
     }
 }

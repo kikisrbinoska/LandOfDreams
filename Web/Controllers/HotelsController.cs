@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Domain.Models;
 using Repository;
 using Service.Interface;
+using Service.Implementation;
 
 namespace Web.Controllers
 {
@@ -22,10 +23,18 @@ namespace Web.Controllers
 
 
         // GET: Hotels
-        public IActionResult  Index()
+        public IActionResult Index(int? destinationId)
         {
-            return View(_hotelService.GetAllHotels());
+            if (destinationId == null)
+            {
+                return NotFound();
+            }
+
+            var apartments = _hotelService.GetHotelsByDestination(destinationId.Value);
+
+            return View(apartments);
         }
+
 
         // GET: Hotels/Details/5
         public IActionResult Details(int? id)

@@ -7,13 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Domain.Models;
+using Microsoft.EntityFrameworkCore;
+using Repository.Interface;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+using System.Threading.Tasks;
+
 namespace Repository.Implementation
 {
     public class Repository<T> : IRepository<T> where T : BaseEntity
     {
         private readonly ApplicationDbContext context;
         private DbSet<T> entities;
-       
+
 
         public Repository(ApplicationDbContext context)
         {
@@ -36,22 +45,28 @@ namespace Repository.Implementation
             }
         }
 
-        public T Get(int? id)
+     
+      public T Get(int? id)
         {
+            if (id == null)
+            {
+                return null;
+            }
+
             if (typeof(T).IsAssignableFrom(typeof(Booking)))
             {
                 return entities
                     .Include("Apartment")
                     .Include("Hotel")
-                    .Include("Destionation")
-                    .First(s => s.Id == id);
+                    .Include("Destination")
+                    .FirstOrDefault(s => s.Id == id);
             }
             else
             {
-                return entities.First(s => s.Id == id);
+                return entities.FirstOrDefault(s => s.Id == id);
             }
-
         }
+
         public T Insert(T entity)
         {
             if (entity == null)

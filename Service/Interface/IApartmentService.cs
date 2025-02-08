@@ -15,5 +15,6 @@ namespace Service.Interface
         List<Apartment> InsertManyApartment(List<Apartment> entities);
         Apartment UpdateApartment(Apartment entity);
         Apartment DeleteApartment(Apartment entity);
+        List<Apartment> GetApartmentsByDestination(int destinationId);
     }
 }

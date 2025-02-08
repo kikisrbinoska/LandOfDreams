@@ -11,6 +11,7 @@ namespace Domain.Models
     {
         public string? Name { get; set; }
         public string? ImageUrl { get; set; }
+        public virtual List<Apartment>? Apartments { get; set; }
         public virtual List<Booking>? Bookings { get; set; }
     }
 }
