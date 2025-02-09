@@ -1,4 +1,5 @@
 ﻿using Domain.Models;
+using Org.BouncyCastle.Asn1.X509;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Repository.Interface
 {
-    public interface IBookingRepository
+    public interface IReservationRepository
     {
-        List<Booking> GetAllBookings();
-        Booking GetDetailsForBooking(BaseEntity id);
+        List<Reservation> GetAllReservations();
+        Reservation GetDetailsForReservation(int id);
     }
 }

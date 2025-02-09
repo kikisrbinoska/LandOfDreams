@@ -21,10 +21,10 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped(typeof(IReservationRepository), typeof(ReservationRepository));
 builder.Services.AddTransient<IDestinationService, DestinationService>();
 builder.Services.AddTransient<IHotelService, HotelService>();
 builder.Services.AddTransient<IApartmentService, ApartmentService>();
-builder.Services.AddTransient<IBookingService, BookingService>();
 builder.Services.AddTransient<IReservationService, ReservationService>();
 builder.Services.AddTransient<IPaymentsService, PaymentsService>();
 var app = builder.Build();

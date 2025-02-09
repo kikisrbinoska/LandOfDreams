@@ -14,12 +14,12 @@ namespace Web.Controllers
     public class ApartmentsController : Controller
     {
         private readonly IApartmentService _apartmentService;
-        private readonly IBookingService _bookingService;
+        
 
-        public ApartmentsController(IApartmentService apartmentService, IBookingService bookingService)
+        public ApartmentsController(IApartmentService apartmentService)
         {
             _apartmentService = apartmentService;
-            _bookingService = bookingService;
+            
         }
 
 

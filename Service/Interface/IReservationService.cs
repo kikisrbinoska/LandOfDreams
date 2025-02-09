@@ -1,4 +1,5 @@
 ﻿using Domain.Models;
+using Org.BouncyCastle.Asn1.X509;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,6 @@ namespace Service.Interface
         List<Reservation> InsertManyReservations(List<Reservation> entities);
         Reservation UpdateReservation(Reservation entity);
         Reservation DeleteReservation(Reservation entity);
+        Reservation GetDetailsForReservation(int id);
     }
 }

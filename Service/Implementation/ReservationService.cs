@@ -11,10 +11,12 @@ namespace Service.Implementation
 {
     public class ReservationService : IReservationService
     {
+        private readonly IReservationRepository _repository;
         private readonly IRepository<Reservation> _reservationsRepository;
 
-        public ReservationService(IRepository<Reservation> reservationsRepository)
+        public ReservationService(IReservationRepository repository, IRepository<Reservation> reservationsRepository)
         {
+            _repository = repository;
             _reservationsRepository = reservationsRepository;
         }
 
@@ -26,6 +28,11 @@ namespace Service.Implementation
         public List<Reservation> GetAllReservations()
         {
             return _reservationsRepository.GetAll().ToList();
+        }
+
+        public Reservation GetDetailsForReservation(int id)
+        {
+            return _repository.GetDetailsForReservation(id);
         }
 
         public Reservation GetReservation(int? id)
