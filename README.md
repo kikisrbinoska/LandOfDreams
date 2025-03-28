@@ -11,4 +11,4 @@ LandOfDreams is a .NET-based booking system that allows users to search for dest
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/yourusername/LandOfDreams.git
+   git clone https://github.com/kikisrbinoska/LandOfDreams.git
